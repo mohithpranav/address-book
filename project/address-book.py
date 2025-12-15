@@ -1,5 +1,6 @@
 print("Welcome  to the Address Book Application!")
 
+# uc1
 class Contact:
     def __init__(self, first_name, last_name, address, city, state, zip_code, phone, email):
         self.first_name = first_name
@@ -21,8 +22,8 @@ class Contact:
             f"Phone: {self.phone}\n"
             f"Email: {self.email}"
         )
-        
-        
+
+# uc2       
 class AdressBook:
     def __init__(self, name):
         self.name = name
@@ -30,3 +31,17 @@ class AdressBook:
         
     def add_contact(self, contact):
         self.contacts.append(contact)
+        
+    # uc3
+    def edit_contact(self, first_name, last_name):
+        for c in self.contacts:
+            if c.first_name == first_name and c.last_name == last_name:
+                c.address = input("Enter new address: ")
+                c.city = input("Enter new city: ")
+                c.state = input("Enter new state: ")
+                c.zip_code = input("Enter new zip code: ")
+                c.phone = input("Enter new phone number: ")
+                c.email = input("Enter new email: ")
+                print("Contact updated successfully.")
+                return
+        print("Contact not found.")
