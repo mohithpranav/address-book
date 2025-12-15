@@ -82,3 +82,30 @@ class AdressBook:
                         results.append(c)
             return results
         
+        # uc9
+        def view_by_City(self):
+            city_map = {}
+            for book in self.address_books.values():
+                for c in book.contacts:
+                    city_map.setdefault(c.city, []).append(c)
+            
+            for city, people in city_map.items():
+                print(f"City: {city}")
+                for p in people:
+                    print(p)
+          
+        # uc9          
+        def view_by_State(self):
+            state_map = {}
+            for book in self.address_books.values():
+                for c in book.contacts:
+                    state_map.setdefault(c.state, []).append(c)
+            
+            for state, people in state_map.items():
+                print(f"State: {state}")
+                for p in people:
+                    print(p)
+                    
+        
+        
+        
