@@ -1,3 +1,6 @@
+import csv
+
+
 print("Welcome  to the Address Book Application!")
 
 # uc1
@@ -91,6 +94,22 @@ class AdressBook:
     def read_from_file(self, filename):
         with open(filename, 'r') as file:
             print ("\n" + file.read())
+            
+    # uc14
+    def write_csv(self, filename):
+        with open(filename, 'w', newline= '') as f:
+            writer = csv.writer(f)
+            for c in self.contacts:
+                writer.writerow([c.first_name, c.last_name, c.address, c.city, c.state, c.zip_code, c.phone, c.email])
+        print("Data written to CSV file successfully.")
+        
+    def read_csv(self, filename):
+        with open(filename, 'r') as f:
+            reader = csv.reader(f)
+            self.contacts.clear()
+            for row in reader:
+                self.contacts.append(Contact(*row))
+        print("Data read from CSV file successfully.")
         
 #uc6
 class AddressBookSystem:
