@@ -81,6 +81,16 @@ class AdressBook:
         self.contacts.sort(key=lambda c: c.zip_code)
         print("Contacts sorted by zip code.")
     
+    # UC13
+    def write_to_file(self, filename):
+        with open(filename, 'w') as file:
+            for c in self.contacts:
+                file.write(str(c) + "\n\n")
+        print("Data written to file successfully.")
+    
+    def read_from_file(self, filename):
+        with open(filename, 'r') as file:
+            print ("\n" + file.read())
         
 #uc6
 class AddressBookSystem:
