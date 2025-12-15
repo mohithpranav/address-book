@@ -21,3 +21,12 @@ class Contact:
             f"Phone: {self.phone}\n"
             f"Email: {self.email}"
         )
+        
+        
+class AdressBook:
+    def __init__(self, name):
+        self.name = name
+        self.contacts = []
+        
+    def add_contact(self, contact):
+        self.contacts.append(contact)
