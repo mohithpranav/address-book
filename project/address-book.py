@@ -28,9 +28,15 @@ class AdressBook:
     def __init__(self, name):
         self.name = name
         self.contacts = []
-        
+    
+    # uc2 + uc7 (duplicate check)
     def add_contact(self, contact):
+        for c in self.contacts:
+            if c.full_name() == contact.full_name():
+                print("Contact with this name already exists.")
+                return
         self.contacts.append(contact)
+        print("Contact added successfully.")
         
     # uc3
     def edit_contact(self, first_name, last_name):
