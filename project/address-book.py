@@ -55,4 +55,15 @@ class AdressBook:
                 return
         print("Contact not found.")
         
+    #uc6
+    class AddressBookSystem:
+        def __init__(self):
+            self.address_books = {}
+            
+        def add_address_book(self, name):
+            if name in self.address_books:
+                print("Address book with this name already exists.")
+                return
+            self.address_books[name] = AdressBook(name)
+            print(f"Address book '{name}' created successfully.")
         
