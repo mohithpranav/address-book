@@ -121,5 +121,3 @@ class AdressBook:
                 for c in book.contacts:
                     state_count[c.state] = state_count.get(c.state, 0) + 1
             print(state_count)
-        
-        
