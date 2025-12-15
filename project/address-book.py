@@ -66,6 +66,22 @@ class AdressBook:
         self.contacts.sort(key=lambda c: (c.first_name, c.last_name))
         print("Contacts sorted by name.")
         
+    # UC12
+    def sort_by_city(self):
+        self.contacts.sort(key=lambda c: c.city)
+        print("Contacts sorted by city.")
+    
+    # UC12
+    def sort_by_state(self):
+        self.contacts.sort(key=lambda c: c.state)
+        print("Contacts sorted by state.")
+        
+    # UC12
+    def sort_by_zip(self):
+        self.contacts.sort(key=lambda c: c.zip_code)
+        print("Contacts sorted by zip code.")
+    
+        
 #uc6
 class AddressBookSystem:
         def __init__(self):
