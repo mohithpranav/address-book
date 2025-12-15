@@ -106,6 +106,20 @@ class AdressBook:
                 for p in people:
                     print(p)
                     
-        
+        # uc10
+        def count_by_City(self):
+            city_count = {}
+            for book in self.address_books.values():
+                for c in book.contacts:
+                    city_count[c.city] = city_count.get(c.city, 0) + 1
+            print(city_count)
+            
+        # uc10
+        def count_by_State(self):
+            state_count = {}
+            for book in self.address_books.values():
+                for c in book.contacts:
+                    state_count[c.state] = state_count.get(c.state, 0) + 1
+            print(state_count)
         
         
