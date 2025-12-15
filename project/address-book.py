@@ -72,4 +72,13 @@ class AdressBook:
                 return
             self.address_books[name] = AdressBook(name)
             print(f"Address book '{name}' created successfully.")
+            
+        #uc8
+        def search_Person_by_City_or_State(self, city, state):
+            results = []
+            for book in self.address_books.values():
+                for c in book.contacts:
+                    if c.city == city or c.state == state:
+                        results.append(c)
+            return results
         
