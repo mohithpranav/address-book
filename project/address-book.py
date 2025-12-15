@@ -61,8 +61,13 @@ class AdressBook:
                 return
         print("Contact not found.")
         
-    #uc6
-    class AddressBookSystem:
+    # UC11
+    def sort_by_name(self):
+        self.contacts.sort(key=lambda c: (c.first_name, c.last_name))
+        print("Contacts sorted by name.")
+        
+#uc6
+class AddressBookSystem:
         def __init__(self):
             self.address_books = {}
             
