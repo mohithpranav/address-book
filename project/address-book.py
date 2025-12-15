@@ -45,3 +45,12 @@ class AdressBook:
                 print("Contact updated successfully.")
                 return
         print("Contact not found.")
+        
+    # uc4
+    def delete_contact(self, first_name, last_name):
+        for c in self.contacts:
+            if c.first_name == first_name and c.last_name == last_name:
+                self.contacts.remove(c)
+                print("Contact deleted successfully.")
+                return
+        print("Contact not found.")
