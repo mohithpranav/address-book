@@ -1,5 +1,5 @@
 import csv
-
+import json
 
 print("Welcome  to the Address Book Application!")
 
@@ -111,6 +111,21 @@ class AdressBook:
                 self.contacts.append(Contact(*row))
         print("Data read from CSV file successfully.")
         
+    # uc15
+    def write_to_json(self, filename):
+        with open(filename, 'w') as f:
+            json.dump([c.__dict__ for c in self.contacts], f, indent=4)
+        print("Data written to JSON file successfully.")
+        
+    # uc15
+    def read_from_json(self, filename):
+        with open(filename, 'r') as f:
+            data = json.load(f)
+            self.contacts.clear()
+            for c in data:
+                self.contacts.append(Contact(**c))
+        print("Data read from JSON file successfully.")
+        
 #uc6
 class AddressBookSystem:
         def __init__(self):
@@ -171,3 +186,114 @@ class AddressBookSystem:
                 for c in book.contacts:
                     state_count[c.state] = state_count.get(c.state, 0) + 1
             print(state_count)
+            
+                  
+# ================== MAIN PROGRAM ==================
+def main():
+    print("Welcome to Address Book Program (UC1–UC14)")
+    system = AddressBookSystem()
+    system.add_address_book("Default")
+    book = system.address_books["Default"]
+
+    while True:
+        print("\n1. Add Contact")
+        print("2. Edit Contact")
+        print("3. Delete Contact")
+        print("4. Display Contacts")
+        print("5. Sort by Name")
+        print("6. Sort by City")
+        print("7. Sort by State")
+        print("8. Sort by Zip")
+        print("9. Write to File")
+        print("10. Read from File")
+        print("11. Write CSV")
+        print("12. Read CSV")
+        print("13. Search by City")
+        print("14. Search by State")
+        print("15. Count by City")
+        print("16. Count by State")
+        print("17. Write to JSON")
+        print("18. Read from JSON")
+        print("19. Exit")
+
+        choice = input("Enter choice: ")
+
+        if choice == "1":
+            contact = Contact(
+                input("First Name: "),
+                input("Last Name: "),
+                input("Address: "),
+                input("City: "),
+                input("State: "),
+                input("Zip: "),
+                input("Phone: "),
+                input("Email: ")
+            )
+            book.add_contact(contact)
+
+        elif choice == "2":
+            book.edit_contact(input("First Name: "), input("Last Name: "))
+
+        elif choice == "3":
+            book.delete_contact(input("First Name: "), input("Last Name: "))
+
+        elif choice == "4":
+            for c in book.contacts:
+                print(c)
+
+        elif choice == "5":
+            book.sort_by_name()
+            print("Sorted by name")
+
+        elif choice == "6":
+            book.sort_by_city()
+            print("Sorted by city")
+            
+        elif choice == "7":
+            book.sort_by_state()
+            print("Sorted by state")
+
+        elif choice == "8":
+            book.sort_by_zip()
+            print("Sorted by zip")
+
+        elif choice == "9":
+            book.write_to_file("addressbook.txt")
+
+        elif choice == "10":
+            book.read_from_file("addressbook.txt")
+
+        elif choice == "11":
+            book.write_csv("addressbook.csv")
+
+        elif choice == "12":
+            book.read_csv("addressbook.csv")
+
+        elif choice == "13":
+            system.search_by_city_or_state(city=input("Enter City: "))
+
+        elif choice == "14":
+            system.search_by_city_or_state(state=input("Enter State: "))
+
+        elif choice == "15":
+            system.count_by_city()
+
+        elif choice == "16":
+            system.count_by_state()
+
+        elif choice == "17":
+            book.write_to_json("addressbook.json")
+
+        elif choice == "18":
+            book.read_from_json("addressbook.json")
+
+        elif choice == "19":
+            print("Exiting Program")
+            break
+
+        else:
+            print("Invalid choice")
+
+
+if __name__ == "__main__":
+    main()
